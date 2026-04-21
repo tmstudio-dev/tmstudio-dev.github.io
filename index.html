@@ -1,10 +1,125 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
-    <title>tmstudio-dev</title>
-  </head>
-  <body>
-    <h1>Funciona GitHub Pages</h1>
-  </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMStudio.dev | Innovación en tus manos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e293b;
+            --text: #334155;
+            --light: #f8fafc;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+        header {
+            background: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        h1 { margin: 0; color: var(--secondary); font-size: 2.5rem; }
+        .hero {
+            padding: 4rem 1rem;
+            text-align: center;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+        .apps-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: -4rem;
+        }
+        .app-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            width: 300px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        .app-card:hover { transform: translateY(-10px); }
+        .app-icon { width: 80px; height: 80px; border-radius: 18px; margin-bottom: 1rem; }
+        .app-card h3 { margin: 0.5rem 0; font-size: 1.5rem; color: var(--secondary); }
+        .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: bold;
+        }
+        .contact {
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+        .contact a { color: var(--primary); font-weight: bold; text-decoration: none; }
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>TMStudio.dev</h1>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h2>Herramientas inteligentes para tu día a día</h2>
+        <p>Apps diseñadas para ahorrarte tiempo y dinero en tus desplazamientos y aventuras.</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="apps-grid">
+        <div class="app-card">
+            <img src="https://via.placeholder.com/80" alt="LowFuel Icon" class="app-icon">
+            <h3>LowFuel</h3>
+            <p>Encuentra las gasolineras más baratas de España y Europa en tiempo real. Ahorra en cada repostaje.</p>
+            <a href="#" class="btn">Próximamente en Tiendas</a>
+        </div>
+
+        <div class="app-card">
+            <img src="https://via.placeholder.com/80" alt="GeoSea Icon" class="app-icon">
+            <h3>GeoSea</h3>
+            <p>Tu compañero inteligente para navegación marítima y datos geoespaciales precisos.</p>
+            <a href="#" class="btn">Próximamente en Tiendas</a>
+        </div>
+    </div>
+</div>
+
+<section class="contact">
+    <div class="container">
+        <h2>Contacto y Soporte</h2>
+        <p>¿Tienes alguna duda o consulta técnica? Estamos para ayudarte.</p>
+        <p>Escríbenos a: <a href="mailto:tmstudio.dev@gmail.com">tmstudio.dev@gmail.com</a></p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 TMStudio.dev - Todos los derechos reservados.</p>
+    <p><small><a href="/app-ads.txt" style="color: #94a3b8; text-decoration: none;">app-ads.txt</a></small></p>
+</footer>
+
+</body>
 </html>
