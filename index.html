@@ -3,49 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TMStudio.dev | Innovación en tus manos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>TMStudio.dev | Aplicaciones Inteligentes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #2563eb;
-            --secondary: #1e293b;
-            --text: #334155;
-            --light: #f8fafc;
-        }
-        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; color: var(--text); background-color: var(--light); line-height: 1.6; }
-        header { background: white; padding: 2rem 1rem; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        h1 { margin: 0; color: var(--secondary); font-size: 2.5rem; }
-        .hero { padding: 4rem 1rem; text-align: center; background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: white; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
-        .apps-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: -4rem; }
-        .app-card { background: white; border-radius: 1rem; padding: 2rem; width: 300px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); transition: transform 0.3s ease; text-align: center; }
-        .app-card:hover { transform: translateY(-10px); }
+        :root { --primary: #2563eb; --secondary: #0f172a; --bg: #f1f5f9; }
+        body { font-family: 'Inter', sans-serif; margin: 0; background-color: var(--bg); color: #1e293b; }
         
-        /* Iconos de las apps - Ajustados */
-        .app-icon { width: 100px; height: 100px; border-radius: 22px; margin-bottom: 1rem; object-fit: cover; }
+        /* Cabecera y Hero */
+        header { background: white; padding: 1.5rem; text-align: center; border-bottom: 1px solid #e2e8f0; }
+        h1 { margin: 0; font-size: 1.8rem; color: var(--secondary); letter-spacing: -1px; }
+        .hero { background: var(--secondary); color: white; padding: 3rem 1rem 6rem; text-align: center; }
+        .hero h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+        .hero p { opacity: 0.8; font-size: 1.1rem; }
         
-        .app-card h3 { margin: 0.5rem 0; font-size: 1.8rem; color: var(--secondary); }
-        .description { font-size: 1rem; color: var(--text); margin-bottom: 1.5rem; height: 4.5rem; overflow: hidden; }
+        /* Grid de Apps */
+        .container { max-width: 900px; margin: -4rem auto 2rem; padding: 0 1rem; }
+        .apps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .app-card { background: white; border-radius: 1.5rem; padding: 2rem; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); text-align: center; transition: transform 0.2s; }
+        .app-card:hover { transform: translateY(-5px); }
+        .app-icon { width: 100px; height: 100px; border-radius: 22%; margin-bottom: 1.5rem; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .app-card h3 { font-size: 1.6rem; margin: 0.5rem 0; color: var(--secondary); }
+        .description { font-size: 0.95rem; color: #64748b; margin-bottom: 1.5rem; min-height: 3rem; }
         
-        /* Contenedor de botones de tienda */
-        .store-badges {
-            display: flex;
-            flex-direction: column; /* Stack vertically by default */
-            gap: 1rem;
-            align-items: center;
-            margin-top: 1.5rem;
-        }
-        
-        /* Ajuste de tamaño para los logos oficiales */
-        .store-badges img {
-            height: 40px; /* Consistent height for both logos */
-            width: auto;
-            display: block;
-        }
+        /* Ajuste perfecto para los botones de tienda */
+        .badge-container { display: flex; flex-direction: column; gap: 0.2rem; align-items: center; }
+        .badge-container a { transition: opacity 0.2s; }
+        .badge-container a:hover { opacity: 0.8; }
+        .apple-badge { height: 44px; width: auto; margin-bottom: 5px; }
+        .google-badge { height: 64px; width: auto; margin-top: -5px; }
 
-        .contact { padding: 4rem 1rem; text-align: center; }
-        .contact a { color: var(--primary); font-weight: bold; text-decoration: none; }
-        footer { background: var(--secondary); color: white; padding: 2rem; text-align: center; font-size: 0.9rem; }
+        /* Contacto y Footer */
+        .contact { text-align: center; padding: 4rem 1rem; }
+        .contact h2 { color: var(--secondary); }
+        .contact a { color: var(--primary); text-decoration: none; font-weight: 600; }
+        footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #94a3b8; }
     </style>
 </head>
 <body>
@@ -55,10 +46,8 @@
 </header>
 
 <section class="hero">
-    <div class="container">
-        <h2>Herramientas inteligentes para tu día a día</h2>
-        <p>Ahorra tiempo y dinero con nuestras aplicaciones avanzadas.</p>
-    </div>
+    <h2>Nuestras Aplicaciones</h2>
+    <p>Soluciones útiles para Android e iOS</p>
 </section>
 
 <div class="container">
@@ -66,38 +55,34 @@
         <div class="app-card">
             <img src="lowfuel.png" alt="LowFuel Icon" class="app-icon">
             <h3>LowFuel</h3>
-            <p class="description">Encuentra las gasolineras más baratas de España y Europa en tiempo real. Ahorra en cada repostaje.</p>
-            
-            <div class="store-badges">
-                <a href="#"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/es-es" alt="Consíguelo en el App Store"></a>
-                <a href="#"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/es_badge_web_generic.png" alt="Disponible en Google Play"></a>
+            <p class="description">Encuentra las gasolineras más baratas y ahorra en cada depósito.</p>
+            <div class="badge-container">
+                <a href="#"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/es-es" class="apple-badge" alt="Descargar en App Store"></a>
+                <a href="#"><img src="https://play.google.com/intl/en_us/badges/images/generic/es_badge_web_generic.png" class="google-badge" alt="Disponible en Google Play"></a>
             </div>
         </div>
 
         <div class="app-card">
             <img src="geosea.png" alt="GeoSea Icon" class="app-icon">
             <h3>GeoSea</h3>
-            <p class="description">Navegación inteligente y datos geoespaciales para tus aventuras marítimas.</p>
-            
-            <div class="store-badges">
-                <a href="#"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/es-es" alt="Consíguelo en el App Store"></a>
-                <a href="#"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/es_badge_web_generic.png" alt="Disponible en Google Play"></a>
+            <p class="description">Navegación inteligente y datos marítimos en la palma de tu mano.</p>
+            <div class="badge-container">
+                <a href="#"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/es-es" class="apple-badge" alt="Descargar en App Store"></a>
+                <a href="#"><img src="https://play.google.com/intl/en_us/badges/images/generic/es_badge_web_generic.png" class="google-badge" alt="Disponible en Google Play"></a>
             </div>
         </div>
     </div>
 </div>
 
 <section class="contact">
-    <div class="container">
-        <h2>Contacto y Soporte</h2>
-        <p>¿Tienes alguna duda o consulta técnica? Escríbenos a:</p>
-        <p><a href="mailto:tmstudio.dev@gmail.com">tmstudio.dev@gmail.com</a></p>
-    </div>
+    <h2>¿Necesitas ayuda?</h2>
+    <p>Soporte técnico y consultas:</p>
+    <a href="mailto:tmstudio.dev@gmail.com">tmstudio.dev@gmail.com</a>
 </section>
 
 <footer>
-    <p>&copy; 2024 TMStudio.dev - Todos los derechos reservados.</p>
-    <p><small><a href="/app-ads.txt" style="color: #94a3b8; text-decoration: none;">app-ads.txt</a></small></p>
+    <p>&copy; 2026 TMStudio.dev</p>
+    <p><a href="app-ads.txt" style="color:inherit; text-decoration:none;">Ver app-ads.txt</a></p>
 </footer>
 
 </body>
