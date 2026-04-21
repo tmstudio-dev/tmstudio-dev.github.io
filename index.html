@@ -1,91 +1,297 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TMStudio.dev | Aplicaciones Inteligentes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root { --primary: #2563eb; --secondary: #0f172a; --bg: #f1f5f9; }
-        body { font-family: 'Inter', sans-serif; margin: 0; background-color: var(--bg); color: #1e293b; }
-        
-        /* Cabecera y Hero */
-        header { background: white; padding: 1.5rem; text-align: center; border-bottom: 1px solid #e2e8f0; }
-        h1 { margin: 0; font-size: 1.8rem; color: var(--secondary); letter-spacing: -1px; }
-        .hero { background: var(--secondary); color: white; padding: 3rem 1rem 6rem; text-align: center; }
-        .hero h2 { font-size: 2rem; margin-bottom: 0.5rem; }
-        .hero p { opacity: 0.8; font-size: 1.1rem; }
-        
-        /* Grid de Apps */
-        .container { max-width: 900px; margin: -4rem auto 2rem; padding: 0 1rem; }
-        .apps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .app-card { background: white; border-radius: 1.5rem; padding: 2rem; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); text-align: center; transition: transform 0.2s; }
-        .app-card:hover { transform: translateY(-5px); }
-        .app-icon { width: 100px; height: 100px; border-radius: 22%; margin-bottom: 1.5rem; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .app-card h3 { font-size: 1.6rem; margin: 0.5rem 0; color: var(--secondary); }
-        .description { font-size: 0.95rem; color: #64748b; margin-bottom: 1.5rem; min-height: 3rem; }
-        
-        /* Ajuste perfecto para los botones de tienda */
-        .badge-container { display: flex; flex-direction: column; gap: 0; align-items: center; }
-        .badge-container a { transition: opacity 0.2s; display: inline-block; }
-        .badge-container a:hover { opacity: 0.8; }
-        
-        /* Tañamos exactos para igualar visualmente ambas tiendas */
-        .apple-badge { height: 42px; width: auto; margin-bottom: 5px; }
-        .google-badge { height: 62px; width: auto; margin-top: -8px; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TM Studio Dev</title>
+  <meta
+    name="description"
+    content="TM Studio Dev - Aplicaciones disponibles en App Store y Google Play: LowFuel y GeoSea."
+  />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        /* Contacto y Footer */
-        .contact { text-align: center; padding: 4rem 1rem; }
-        .contact h2 { color: var(--secondary); }
-        .contact a { color: var(--primary); text-decoration: none; font-weight: 600; }
-        footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #94a3b8; }
-    </style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #f6f8fb 0%, #eef2f7 100%);
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 70px 20px 50px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      color: #111827;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: #4b5563;
+    }
+
+    .apps-section {
+      padding: 20px 0 60px;
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .app-icon {
+      width: 84px;
+      height: 84px;
+      border-radius: 22px;
+      object-fit: cover;
+      background: #f3f4f6;
+      padding: 6px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .app-title {
+      font-size: 1.8rem;
+      color: #111827;
+    }
+
+    .app-subtitle {
+      color: #6b7280;
+      font-size: 0.95rem;
+      margin-top: 4px;
+    }
+
+    .card p {
+      color: #374151;
+      margin-bottom: 20px;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e5eefc;
+      color: #1d4ed8;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: bold;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: bold;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: #111827;
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: #2563eb;
+      color: #ffffff;
+    }
+
+    .contact {
+      background: #111827;
+      color: white;
+      border-radius: 24px;
+      padding: 36px 28px;
+      text-align: center;
+      margin: 10px 0 50px;
+      box-shadow: 0 10px 30px rgba(17, 24, 39, 0.2);
+    }
+
+    .contact h2 {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .contact p {
+      color: #d1d5db;
+      max-width: 760px;
+      margin: 0 auto 16px;
+    }
+
+    .contact a {
+      color: #93c5fd;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      color: #6b7280;
+      padding: 20px 0 40px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .app-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .app-icon {
+        width: 72px;
+        height: 72px;
+      }
+
+      .app-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<header>
-    <h1>TMStudio.dev</h1>
-</header>
-
-<section class="hero">
-    <h2>Nuestras Aplicaciones</h2>
-    <p>Soluciones útiles para Android e iOS</p>
-</section>
-
-<div class="container">
-    <div class="apps-grid">
-        <div class="app-card">
-            <img src="lowfuel.png" alt="LowFuel Icon" class="app-icon">
-            <h3>LowFuel</h3>
-            <p class="description">Encuentra las gasolineras más baratas y ahorra en cada depósito.</p>
-            <div class="badge-container">
-                <a href="#"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/es-es" class="apple-badge" alt="Descargar en App Store"></a>
-                <a href="#"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/es_badge_web_generic.png" class="google-badge" alt="Disponible en Google Play"></a>
-            </div>
-        </div>
-
-        <div class="app-card">
-            <img src="geosea.png" alt="GeoSea Icon" class="app-icon">
-            <h3>GeoSea</h3>
-            <p class="description">Navegación inteligente y datos marítimos en la palma de tu mano.</p>
-            <div class="badge-container">
-                <a href="#"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/es-es" class="apple-badge" alt="Descargar en App Store"></a>
-                <a href="#"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/es_badge_web_generic.png" class="google-badge" alt="Disponible en Google Play"></a>
-            </div>
-        </div>
+  <header class="hero">
+    <div class="container">
+      <h1>TM Studio Dev</h1>
+      <p>
+        Desarrollo de aplicaciones útiles, prácticas e intuitivas para el día a día.
+        Descubre nuestras apps disponibles en <strong>App Store</strong> y
+        <strong>Google Play</strong>.
+      </p>
     </div>
-</div>
+  </header>
 
-<section class="contact">
-    <h2>¿Necesitas ayuda?</h2>
-    <p>Soporte técnico y consultas:</p>
-    <a href="mailto:tmstudio.dev@gmail.com">tmstudio.dev@gmail.com</a>
-</section>
+  <main class="container">
+    <section class="apps-section">
+      <div class="apps-grid">
+        <article class="card">
+          <div class="app-header">
+            <img src="lowfuel.png" alt="Icono de LowFuel" class="app-icon" />
+            <div>
+              <h2 class="app-title">LowFuel</h2>
+              <div class="app-subtitle">Encuentra combustible al mejor precio</div>
+            </div>
+          </div>
 
-<footer>
-    <p>&copy; 2026 TMStudio.dev</p>
-    <p><a href="app-ads.txt" style="color:inherit; text-decoration:none;">Ver app-ads.txt</a></p>
-</footer>
+          <p>
+            LowFuel te ayuda a localizar gasolineras y consultar precios de combustible
+            para que puedas ahorrar en cada repostaje de forma rápida y sencilla.
+          </p>
 
+          <div class="badges">
+            <span class="badge">Disponible en App Store</span>
+            <span class="badge">Disponible en Google Play</span>
+          </div>
+
+          <div class="links">
+            <a href="#" class="btn btn-primary">Ver en App Store</a>
+            <a href="#" class="btn btn-secondary">Ver en Google Play</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="app-header">
+            <img src="geosea.png" alt="Icono de GeoSea" class="app-icon" />
+            <div>
+              <h2 class="app-title">GeoSea</h2>
+              <div class="app-subtitle">Herramientas e información para el mar</div>
+            </div>
+          </div>
+
+          <p>
+            GeoSea ofrece una experiencia pensada para quienes necesitan consultar
+            información útil relacionada con el entorno marítimo de forma clara y accesible.
+          </p>
+
+          <div class="badges">
+            <span class="badge">Disponible en App Store</span>
+            <span class="badge">Disponible en Google Play</span>
+          </div>
+
+          <div class="links">
+            <a href="#" class="btn btn-primary">Ver en App Store</a>
+            <a href="#" class="btn btn-secondary">Ver en Google Play</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>Contacto</h2>
+      <p>
+        Para cualquier duda, consulta o propuesta, puedes escribirnos en:
+      </p>
+      <p>
+        <a href="mailto:tmstudio.dev@gmail.com">tmstudio.dev@gmail.com</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 TM Studio Dev. Todos los derechos reservados.
+    </div>
+  </footer>
 </body>
 </html>
