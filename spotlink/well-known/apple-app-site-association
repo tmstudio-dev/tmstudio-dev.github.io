@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["62L3W95J28.dev.tmstudio.Dots"],
+        "components": [
+          { "/": "/sala/*", "comment": "invitaciones a una sala de SpotLink" }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "dev.tmstudio.dots",
+      "sha256_cert_fingerprints": [
+        "PON_AQUI_LA_SHA256_DE_LA_CLAVE_DE_FIRMA_DE_PLAY",
+        "22:D1:DA:C0:9B:1C:E2:7A:A6:CA:C2:77:7E:4B:91:12:DB:2D:74:D7:6F:2A:53:93:C9:18:39:68:28:D9:1D:ED"
+      ]
+    }
+  }
+]
