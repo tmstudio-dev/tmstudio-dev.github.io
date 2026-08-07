@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SpotLink</title>
+<!--
+  Página de aterrizaje de las invitaciones.
+
+  Va en 404.html a propósito: los enlaces son /sala/ABCD, con un código distinto cada
+  vez, y GitHub Pages no puede tener una página por código. Quien tenga la app
+  instalada NUNCA verá esto (el enlace lo abre la app); esto es lo que ve quien no la
+  tiene, en vez de un 404 pelado.
+-->
+<style>
+  :root { color-scheme: light dark; --fg:#22262a; --soft:#5c6469; --bg:#fff; --line:#e2e6ea; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fg:#e8ecef; --soft:#9aa2a9; --bg:#0e1013; --line:#2a3037; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    background: var(--bg); color: var(--fg); text-align: center; padding: 24px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .puntos { display: grid; grid-template-columns: repeat(2, 34px); gap: 10px; justify-content: center; margin-bottom: 28px; }
+  .puntos i { width: 34px; height: 34px; border-radius: 50%; display: block; }
+  h1 { font-size: 26px; font-weight: 300; margin: 0 0 10px; }
+  p { color: var(--soft); font-weight: 300; line-height: 1.55; margin: 0 auto 26px; max-width: 30rem; }
+  .tiendas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  a.boton {
+    display: inline-block; padding: 13px 26px; border: 1.5px solid var(--line);
+    border-radius: 24px; color: var(--fg); text-decoration: none; font-weight: 300;
+  }
+  small { display: block; margin-top: 28px; color: var(--soft); font-weight: 300; }
+</style>
+</head>
+<body>
+  <main>
+    <div class="puntos">
+      <i style="background:#6FA8F7"></i><i style="background:#E8492F"></i>
+      <i style="background:#DFD11E"></i><i style="background:#77E287"></i>
+    </div>
+    <h1>Te han invitado a jugar a SpotLink</h1>
+    <p>
+      Para entrar en la partida necesitas SpotLink instalado. Instálalo y vuelve a
+      pulsar el enlace de la invitación: se abrirá la sala directamente.
+    </p>
+    <p>
+      También puedes abrir la app, entrar en <strong>Multijugador</strong> y escribir
+      el código de la sala, que son los cuatro caracteres del final del enlace.
+    </p>
+    <div class="tiendas">
+      <!-- Pon aquí los enlaces cuando la app esté publicada en cada tienda. -->
+      <a class="boton" href="#">App Store</a>
+      <a class="boton" href="#">Google Play</a>
+    </div>
+    <small>SpotLink · TMStudio.dev</small>
+  </main>
+</body>
+</html>
