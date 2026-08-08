@@ -2,6 +2,13 @@
   "applinks": {
     "details": [
       {
+        "appIDs": ["62L3W95J28.dev.tmstudio.LexiGO"],
+        "components": [
+          { "/": "/j/", "comment": "invitaciones a una partida de LexiGO" },
+          { "/": "/j/*", "comment": "invitaciones a una partida de LexiGO" }
+        ]
+      },
+      {
         "appIDs": ["62L3W95J28.dev.tmstudio.Dots"],
         "components": [
           { "/": "/sala/*", "comment": "invitaciones a una sala de SpotLink" }

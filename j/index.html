@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Te invitan a jugar a LexiGO</title>
+<meta name="description" content="Únete a la partida de LexiGO con este enlace.">
+<meta property="og:title" content="¡Te reto a una partida de LexiGO!">
+<meta property="og:description" content="Abre el enlace y entras directo a la partida.">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --fondo: #1e3a5f;
+    --fondo2: #12263f;
+    --crema: #f2debb;
+    --crema-borde: #d8bd8e;
+    --texto: #2b2b2b;
+    --verde: #4caf7d;
+    --verde-oscuro: #3d8f66;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    min-height: 100dvh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 1.25rem;
+    padding: 2rem 1.25rem calc(2rem + env(safe-area-inset-bottom));
+    background: radial-gradient(120% 90% at 50% 0%, var(--fondo) 0%, var(--fondo2) 100%);
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+    text-align: center;
+  }
+  h1 { margin: 0; font-size: clamp(1.4rem, 6vw, 2rem); font-weight: 800; }
+  p  { margin: 0; opacity: .85; font-size: 1rem; line-height: 1.5; max-width: 32ch; }
+  .marca { font-size: .8rem; letter-spacing: .3em; text-transform: uppercase; opacity: .6; }
+
+  /* El código, en fichas como las del juego */
+  .codigo { display: flex; gap: .4rem; flex-wrap: wrap; justify-content: center; margin: .25rem 0; }
+  .ficha {
+    width: clamp(2.2rem, 11vw, 3rem); height: clamp(2.2rem, 11vw, 3rem);
+    background: linear-gradient(180deg, #fbeed3 0%, var(--crema) 55%, var(--crema-borde) 100%);
+    border-radius: .5rem;
+    box-shadow: 0 .18rem 0 #b99a6b, 0 .5rem .9rem rgba(0,0,0,.35);
+    color: var(--texto);
+    font-size: clamp(1.2rem, 6vw, 1.7rem); font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .boton {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    min-height: 3.25rem; padding: 0 1.75rem;
+    background: linear-gradient(180deg, var(--verde) 0%, var(--verde-oscuro) 100%);
+    color: #fff; font-size: 1.05rem; font-weight: 700;
+    border: 0; border-radius: 999px;
+    box-shadow: 0 .25rem 0 #2f6f4f, 0 .6rem 1.2rem rgba(0,0,0,.35);
+    text-decoration: none; cursor: pointer;
+  }
+  .boton:active { transform: translateY(.15rem); box-shadow: 0 .1rem 0 #2f6f4f; }
+
+  .tiendas { display: flex; gap: .75rem; flex-wrap: wrap; justify-content: center; }
+  .tienda {
+    color: #fff; text-decoration: none; font-size: .9rem; font-weight: 600;
+    padding: .6rem 1.1rem; border: 1px solid rgba(255,255,255,.35); border-radius: 999px;
+  }
+  .aviso { font-size: .85rem; opacity: .65; max-width: 34ch; }
+  .oculto { display: none !important; }
+</style>
+</head>
+<body>
+  <div class="marca">LexiGO</div>
+  <h1 id="titulo">¡Te retan a una partida!</h1>
+  <p id="sub">Pulsa el botón y entrarás directo en la partida.</p>
+
+  <div class="codigo" id="codigo" aria-label="Código de la invitación"></div>
+
+  <a class="boton" id="abrir" href="#">Abrir en LexiGO</a>
+
+  <div class="tiendas oculto" id="tiendas">
+    <a class="tienda" id="android" href="#">Descargar para Android</a>
+    <a class="tienda" id="ios" href="#">Descargar para iPhone/iPad</a>
+  </div>
+
+  <p class="aviso" id="aviso">
+    ¿No se abre? Instala LexiGO, entra en <b>Jugar online</b> → <b>Unirme con un código</b>
+    y escribe el código de arriba.
+  </p>
+
+<script>
+  // ---- Enlaces de las tiendas -------------------------------------------------
+  // Cuando la app esté publicada, cambia estas dos por las fichas reales.
+  // Android: https://play.google.com/store/apps/details?id=dev.tmstudio.lexigo
+  // iOS:     https://apps.apple.com/app/idXXXXXXXXXX
+  var TIENDA_ANDROID = "https://play.google.com/store/apps/details?id=dev.tmstudio.lexigo";
+  var TIENDA_IOS = "https://apps.apple.com/es/app/lexigo/id0000000000";
+  // -----------------------------------------------------------------------------
+
+  // El código llega como ?c=ABC234 (así se comparte). Se aceptan también ?code= y la
+  // forma antigua /j/ABC234 por si alguien tiene un enlace viejo guardado.
+  var ALFABETO = "ABCDEFGHJKMNPQRTUVWXYZ23456789";
+  var params = new URLSearchParams(location.search);
+  var bruto = params.get("c") || params.get("code") ||
+              location.pathname.replace(/\/+$/, "").split("/").pop() || "";
+  var codigo = bruto.toUpperCase().split("").filter(function (c) {
+    return ALFABETO.indexOf(c) >= 0;
+  }).join("");
+
+  var esValido = codigo.length === 6;
+  var deepLink = "lexigo://join/" + codigo;
+
+  // Pinta el código como fichas del juego
+  var cajaCodigo = document.getElementById("codigo");
+  if (esValido) {
+    codigo.split("").forEach(function (letra) {
+      var f = document.createElement("span");
+      f.className = "ficha";
+      f.textContent = letra;
+      cajaCodigo.appendChild(f);
+    });
+  } else {
+    document.getElementById("titulo").textContent = "Ese enlace no vale";
+    document.getElementById("sub").textContent =
+      "Le falta el código de la invitación. Pide a tu amigo que te lo mande otra vez.";
+    document.getElementById("abrir").classList.add("oculto");
+    document.getElementById("aviso").classList.add("oculto");
+  }
+
+  var android = /android/i.test(navigator.userAgent);
+  var ios = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+            (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+  document.getElementById("android").href = TIENDA_ANDROID;
+  document.getElementById("ios").href = TIENDA_IOS;
+
+  var botonAbrir = document.getElementById("abrir");
+  botonAbrir.href = deepLink;
+
+  function abrirApp() {
+    if (!esValido) return;
+    location.href = deepLink;
+  }
+
+  botonAbrir.addEventListener("click", function (e) {
+    e.preventDefault();
+    abrirApp();
+    // Si al segundo y medio seguimos aquí, es que la app no está instalada.
+    setTimeout(mostrarTiendas, 1500);
+  });
+
+  function mostrarTiendas() {
+    if (document.hidden) return; // se fue a la app: no molestamos
+    document.getElementById("tiendas").classList.remove("oculto");
+  }
+
+  // Intento automático al abrir: en móvil casi siempre salta solo a la app. Si el navegador
+  // lo bloquea por no venir de un toque, queda el botón, que sí funciona siempre.
+  if (esValido && (android || ios)) {
+    setTimeout(abrirApp, 250);
+    setTimeout(mostrarTiendas, 2200);
+  } else if (esValido) {
+    // En ordenador no hay app: directamente las tiendas.
+    document.getElementById("tiendas").classList.remove("oculto");
+    document.getElementById("sub").textContent =
+      "Abre este enlace en el móvil donde tengas LexiGO, o instálala:";
+  }
+</script>
+</body>
+</html>
