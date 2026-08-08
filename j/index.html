@@ -87,14 +87,13 @@
 
 <script>
   // ---- Enlaces de las tiendas -------------------------------------------------
-  // Un enlace VACÍO oculta ese botón. Es a propósito: mandar a alguien a una ficha
-  // que no existe es peor que no ofrecerle el botón, y con la app sin publicar en
-  // iOS cualquier id que se ponga aquí es inventado.
+  // Un enlace VACÍO oculta ese botón: mandar a alguien a una ficha que no existe es
+  // peor que no ofrecerle el botón.
   //
-  // Cuando LexiGO esté en la App Store, pega aquí su ficha:
-  //     https://apps.apple.com/es/app/lexigo/idXXXXXXXXXX
+  // El de iOS va SIN código de país (`/app/id…` en vez de `/es/app/…`): Apple redirige
+  // solo a la tienda de quien pulsa, y LexiGO se juega en seis idiomas.
   var TIENDA_ANDROID = "https://play.google.com/store/apps/details?id=dev.tmstudio.lexigo";
-  var TIENDA_IOS = "";
+  var TIENDA_IOS = "https://apps.apple.com/app/id6795663732";
   // -----------------------------------------------------------------------------
 
   // El código llega como ?c=ABC234 (así se comparte). Se aceptan también ?code= y la
