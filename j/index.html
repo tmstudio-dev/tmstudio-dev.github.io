@@ -87,11 +87,14 @@
 
 <script>
   // ---- Enlaces de las tiendas -------------------------------------------------
-  // Cuando la app esté publicada, cambia estas dos por las fichas reales.
-  // Android: https://play.google.com/store/apps/details?id=dev.tmstudio.lexigo
-  // iOS:     https://apps.apple.com/app/idXXXXXXXXXX
+  // Un enlace VACÍO oculta ese botón. Es a propósito: mandar a alguien a una ficha
+  // que no existe es peor que no ofrecerle el botón, y con la app sin publicar en
+  // iOS cualquier id que se ponga aquí es inventado.
+  //
+  // Cuando LexiGO esté en la App Store, pega aquí su ficha:
+  //     https://apps.apple.com/es/app/lexigo/idXXXXXXXXXX
   var TIENDA_ANDROID = "https://play.google.com/store/apps/details?id=dev.tmstudio.lexigo";
-  var TIENDA_IOS = "https://apps.apple.com/es/app/lexigo/id0000000000";
+  var TIENDA_IOS = "";
   // -----------------------------------------------------------------------------
 
   // El código llega como ?c=ABC234 (así se comparte). Se aceptan también ?code= y la
@@ -128,8 +131,12 @@
   var ios = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
             (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 
-  document.getElementById("android").href = TIENDA_ANDROID;
-  document.getElementById("ios").href = TIENDA_IOS;
+  // Cada botón de tienda solo aparece si su enlace está puesto.
+  [["android", TIENDA_ANDROID], ["ios", TIENDA_IOS]].forEach(function (par) {
+    var boton = document.getElementById(par[0]);
+    if (par[1]) boton.href = par[1];
+    else boton.classList.add("oculto");
+  });
 
   var botonAbrir = document.getElementById("abrir");
   botonAbrir.href = deepLink;
